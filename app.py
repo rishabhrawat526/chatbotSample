@@ -3,7 +3,7 @@ import os
 import uuid
 
 app=Flask(__name__)
-app.secret_key = os.getenv("FLASK_SECRET_KEY")
+app.secret_key = os.getenv("SECRET_KEY")
 UPLOADS_FOLDER="uploads"
 os.makedirs(UPLOADS_FOLDER,exist_ok=True)
 
