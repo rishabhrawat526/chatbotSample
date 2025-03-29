@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head><title>Ask a Question</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Ask a Question about your PDF</h2>
+        <form method="post">
+          <input type="text" name="question" placeholder="Type your question" >
+          <button type="submit">Ask</button>
+        </form>
+      
+
+        
+        {% if answer %}
+        <div class="answer_box">
+            <h3>Answer:</h3>
+        <p>{{ answer }}</p>
+        </div>
+        
+        {% endif %}
+    </div>
+</body>
+</html>

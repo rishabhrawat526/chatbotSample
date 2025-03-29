@@ -1,0 +1,44 @@
+annotated-types==0.7.0
+anyio==4.9.0
+blinker @ file:///C:/b/abs_b1i87khtob/croot/blinker_1737448732095/work
+certifi==2025.1.31
+charset-normalizer==3.4.1
+click @ file:///C:/b/abs_f9ihnt72pu/croot/click_1698129847492/work
+cohere==5.14.0
+colorama==0.4.6
+exceptiongroup==1.2.2
+faiss==1.9.0
+fastavro==1.10.0
+filelock==3.18.0
+Flask @ file:///C:/b/abs_a6m37uz578/croot/flask_1737454335662/work
+fsspec==2025.3.0
+h11==0.14.0
+httpcore==1.0.7
+httpx==0.28.1
+httpx-sse==0.4.0
+huggingface-hub==0.29.3
+idna==3.10
+importlib_metadata @ file:///C:/b/abs_9d0lp1ysmt/croot/importlib_metadata-suite_1732633510972/work
+itsdangerous @ file:///C:/b/abs_c4vwgdr5yn/croot/itsdangerous_1716533399914/work
+Jinja2 @ file:///C:/b/abs_920kup4e6u/croot/jinja2_1741711580669/work
+MarkupSafe @ file:///C:/b/abs_a0ma7ge0jc/croot/markupsafe_1738584052792/work
+mkl-service==2.4.0
+mkl_fft @ file:///C:/Users/dev-admin/mkl/mkl_fft_1730823082242/work
+mkl_random @ file:///C:/Users/dev-admin/mkl/mkl_random_1730822522280/work
+numpy @ file:///C:/b/abs_c1ywpu18ar/croot/numpy_and_numpy_base_1708638681471/work/dist/numpy-1.26.4-cp39-cp39-win_amd64.whl#sha256=f284633067fde4bb078a09085a1c9e99a3218c129f5312b7b3d76c9340442a25
+packaging==24.2
+pydantic==2.11.1
+pydantic_core==2.33.0
+PyMuPDF==1.25.4
+python-dotenv==1.1.0
+PyYAML==6.0.2
+requests==2.32.3
+sniffio==1.3.1
+tokenizers==0.21.1
+tqdm==4.67.1
+types-requests==2.32.0.20250328
+typing-inspection==0.4.0
+typing_extensions==4.13.0
+urllib3==2.3.0
+Werkzeug @ file:///C:/b/abs_c7bupijx2_/croot/werkzeug_1737448709012/work
+zipp @ file:///C:/b/abs_2fcpcg89my/croot/zipp_1732630746332/work

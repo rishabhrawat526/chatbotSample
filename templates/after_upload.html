@@ -1,0 +1,14 @@
+<!doctype html>
+<html>
+<head><title>PDF Uploaded</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>PDF uploaded successfully!</h2>
+        <form action="/process_pdf" method="post">
+            <button type="submit">Use this PDF</button>
+        </form>
+    </div>
+</body>
+</html>
