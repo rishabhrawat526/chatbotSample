@@ -9,7 +9,7 @@
   <div class="chat-container">
     <h2>Custom PDF Chatbot</h2>
     
-    <div class="chat-box">
+    <div class="chat-box" id="chat-container">
       {% for msg in history %}
         <div class="chat-message {{ msg.role }}">
           <strong>{{ msg.role.capitalize() }}:</strong> {{ msg.content }}
@@ -21,6 +21,30 @@
       <input type="text" name="question" placeholder="Type your question..." required>
       <button type="submit">Send</button>
     </form>
+
+    <!-- New "Start New Conversation" Button -->
+    <!-- <form action="{{ url_for('index',new_chat='true')}}" method="GET">
+      <button type="submit" class="new-chat-btn">Start New Conversation</button>
+    </form> -->
+    
+    <a href="{{ url_for('index', new_chat='true') }}" class="new-chat-btn">Start New Conversation</a>
+    
+
   </div>
+  <script>
+    function scrollToBottom() {
+      let chatContainer = document.getElementById("chat-container");
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+    }
+  
+    // Scroll to bottom after page loads
+    window.onload = scrollToBottom;
+  
+    // Scroll to bottom after each message send (assuming form submission reloads page)
+    document.querySelector("form").onsubmit = function() {
+      setTimeout(scrollToBottom, 100);  // Wait a bit for messages to load
+    };
+  </script>
+  
 </body>
 </html>

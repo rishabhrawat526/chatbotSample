@@ -10,14 +10,24 @@ os.makedirs(UPLOADS_FOLDER,exist_ok=True)
 
 chat_memory={}
 recent_history=[]
+
 @app.before_request
 def make_session_permanent():
-    session.permanent=True
+    session.permanent=False
     if 'chat_id' not in session:
         session['chat_id'] = str(uuid.uuid4())
 
 @app.route('/',methods=['GET','POST'])
 def index():
+    print("Request args:", request.args)  # Debugging line
+
+    # Ensure 'new_chat' is correctly read
+    if request.args.get("new_chat") == "true":
+        print("New chat detected!")  # Debugging print
+        chat_memory[session['chat_id']]=[]
+    if session['chat_id'] in chat_memory:
+        if len(chat_memory[session['chat_id']]) > 0:
+            return redirect(url_for('ask'))
     if request.method=="POST":
         pdf = request.files['pdf']
         if pdf:
