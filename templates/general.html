@@ -7,12 +7,7 @@
 </head>
 <body>
 
-  <div class="main_container">
 
-    <!-- Sidebar for previous conversations -->
-    <div class="sidebar">
-      
-    </div>
     <div class="chat-container">
       <h2>General Chatbot</h2>
       <div class="chat-box" id="chat-container">
@@ -35,9 +30,10 @@
       
       <a href="{{ url_for('general', new_chat='true') }}" class="new-chat-btn">Start New Conversation</a>
       
+      <a href="{{ url_for('home') }}" class="new-chat-btn">Home</a>
       
     </div>
-  </div>
+
   <script>
     function scrollToBottom() {
       let chatContainer = document.getElementById("chat-container");

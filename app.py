@@ -58,8 +58,10 @@ def index():
             return redirect(url_for('ask'))
     if request.method=="POST":
         pdf = request.files['pdf']
+        
         if pdf:
             filepath = os.path.join(UPLOADS_FOLDER,pdf.filename)
+            print(pdf)
             pdf.save(filepath)
             session['uploaded_pdf'] = filepath
             session['file_name'] = pdf.filename

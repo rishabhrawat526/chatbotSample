@@ -13,12 +13,24 @@ co = cohere.Client(COHERE_API_KEY)
 
 
 def extract_text_from_pdf(pdf_path):
-    doc = fitz.open(pdf_path) 
-    # class pymupdf.document
+    print(pdf_path)
+    file_ext = pdf_path.split('.')[-1].lower()
+    if file_ext not in ['pdf','txt']:
+        return "Unsupported file format. Please upload a PDF or TXT file.", 400
+    
     text=""
-    for page in doc:
-        # no if pages in the document
-        text+=page.get_text()
+    if file_ext == "pdf":
+        doc = fitz.open(pdf_path)
+        for page in doc:
+            # no if pages in the document
+            text+=page.get_text()
+    elif file_ext == "txt":
+        with open(pdf_path, "r", encoding="utf-8") as file:
+            text = file.read() 
+    # class pymupdf.document
+    
+    print(file_ext)
+    print(text)
     return text
 
 
@@ -55,7 +67,7 @@ def store_embeddings_faiss(embeddings, save_path='vector_store/index.faiss'):
 def process_pdf_to_vectors(pdf_path):
     print("Reading PDF...")
     text = extract_text_from_pdf(pdf_path)
-
+    print(text)
     print("Chunking text...")
     chunks = chunk_text(text)
 
