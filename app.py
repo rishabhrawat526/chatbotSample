@@ -14,7 +14,11 @@ def make_session_permanent():
     session.permanent=False
     if 'chat_id' not in session:
         session['chat_id'] = str(uuid.uuid4())
-        session['chat_memory']=[]
+        
+    if 'general' not in session:
+        session['general'] = {'chat_memory': []} 
+    if 'custom' not in session:
+        session['custom'] = {'chat_memory': []} 
     
 
 @app.route('/',methods=['GET','POST'])
@@ -26,20 +30,20 @@ def home():
 def general():
     if request.args.get("new_chat") == "true":
         print("New chat with general bot detected!")  # Debugging print
-        session['chat_memory']=[]
+        session['general']['chat_memory']=[]
         return redirect(url_for('general'))
     if request.method=="POST":
         question = request.form.get('question')
-        session['chat_memory'].append({'role':'user','content':question})
+        session['general']['chat_memory'].append({'role':'user','content':question})
         # Retrieve the last 5 messages from history
-        recent_history = session['chat_memory'][-5:]
+        recent_history = session['general']['chat_memory'][-5:]
         from rag_utils.qa import get_general_answers
         answer = get_general_answers(question,recent_history)
-        session['chat_memory'].append({'role':'chatbot','content':answer})
+        session['general']['chat_memory'].append({'role':'chatbot','content':answer})
         
        
 
-    return render_template('general.html',history=session['chat_memory'])
+    return render_template('general.html',history=session['general']['chat_memory'])
 
 @app.route('/index',methods=['GET','POST'])
 def index():
@@ -51,9 +55,9 @@ def index():
 
     if request.args.get("new_chat") == "true":
         print("New chat detected!")  # Debugging print
-        session['chat_memory']=[]
+        session['custom']['chat_memory']=[]
         # some logic will be added here
-    if len(session['chat_memory']) > 0:
+    if len(session['custom']['chat_memory']) > 0:
             print('yes this is running')
             return redirect(url_for('ask'))
     if request.method=="POST":
@@ -96,15 +100,15 @@ def ask():
     answer=None
     if request.method =="POST":
         question = request.form['question']
-        session['chat_memory'].append({'role':'user','content':question})
+        session['custom']['chat_memory'].append({'role':'user','content':question})
         from rag_utils.qa import answer_question
-        recent_history = session['chat_memory'][-5:]
+        recent_history = session['custom']['chat_memory'][-5:]
         answer = answer_question(question,recent_history)
-        session['chat_memory'].append({'role':'assistant','content':answer})
+        session['custom']['chat_memory'].append({'role':'assistant','content':answer})
         conversations = session.get('conversations')
-        conversations[file_name]['chat_memory'] = session['chat_memory']
+        conversations[file_name]['chat_memory'] = session['custom']['chat_memory']
         print(recent_history)
-    return render_template('chat.html',history=session['chat_memory'],file_name=file_name,file_size = file_size,conversations = session.get('conversations'),active_file = file_name)
+    return render_template('chat.html',history=session['custom']['chat_memory'],file_name=file_name,file_size = file_size,conversations = session.get('conversations'),active_file = file_name)
 
 
 
@@ -123,7 +127,7 @@ def load_conversation(file_name):
         chat_mem = conversations[file_name]['chat_memory'] 
         print(chat_mem)
         session['uploaded_pdf'] = filepath
-        session['chat_memory']=chat_mem
+        session['custom']['chat_memory']=chat_mem
         return redirect(url_for('process_pdf'))
 if __name__=="__main__":
     app.run(
