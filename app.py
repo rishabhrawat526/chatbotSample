@@ -21,14 +21,13 @@ def make_session_permanent():
 def index():
     print("Request args:", request.args)  # Debugging line
 
-    # if 'conversations' not in session:
-    #     session['conversation']={}
-    # Ensure 'new_chat' is correctly read   
+    if 'conversations' not in session:
+        session['conversations']={}
+    
 
     if request.args.get("new_chat") == "true":
         print("New chat detected!")  # Debugging print
         session['chat_memory']=[]
-        # chat_memory[session['chat_id']]=[]
         # some logic will be added here
     if len(session['chat_memory']) > 0:
             print('yes this is running')
@@ -41,9 +40,9 @@ def index():
             session['uploaded_pdf'] = filepath
             session['file_name'] = pdf.filename
             session['file_size']  = round(os.path.getsize(filepath) / 1024, 2)
-            # session['conversations'][pdf.filename]={'file_name':pdf.filename,'chat_memory':{}}
+            session['conversations'][pdf.filename]={'file_name':pdf.filename,'chat_memory':[]}
             return redirect(url_for('after_upload'))
-    return render_template('index.html')
+    return render_template('index.html',conversations = session.get('conversations',{}))
 
 
 @app.route('/after_upload/')
@@ -77,17 +76,15 @@ def ask():
         answer = answer_question(question,recent_history)
         session['chat_memory'].append({'role':'assistant','content':answer})
         print(recent_history)
-    return render_template('chat.html',history=session['chat_memory'],file_name=file_name,file_size = file_size)
+    return render_template('chat.html',history=session['chat_memory'],file_name=file_name,file_size = file_size,conversations = session.get('conversations'))
 
 
 
-# @app.route('/load_conversation/<file_name>')
-# def load_conversation(file_name):
-#     conversations = session.get('conversation',{})
-#     if file_name in conversations:
-#         session['file_name'] = file_name
-#         session['chat_memory'] = conversations[file_name]["chat_memory"]
-#     return ""
+@app.route('/load_conversation/<file_name>')
+def load_conversation(file_name):
+    conversations = session.get('conversation',{})
+    conversations[file_name]['chat_memory'] = session.get('chat_memory')
+    return redirect(url_for('index'))
 if __name__=="__main__":
     app.run(
         host="0.0.0.0",

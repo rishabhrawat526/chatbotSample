@@ -10,7 +10,19 @@
     <div class="main_container">
 
        
-        
+         <!-- Sidebar for previous conversations -->
+        <div class="sidebar">
+            <h2>Previous Conversations</h2>
+            <ul>
+                {% for file, data in conversations.items() %}
+                <li>
+                    <a href="{{ url_for('load_conversation', file_name=file) }}">
+                        {{ data.file_name }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
         <!-- Upload Section -->
         <div class="container">
             <h1>Upload your PDF</h1>

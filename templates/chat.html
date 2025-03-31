@@ -6,32 +6,49 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='chat.css') }}">
 </head>
 <body>
-  <div class="chat-container">
-    <h2>Custom PDF Chatbot</h2>
-    {% if file_name %}
-    <p class="file-name">📄 Using: <strong>{{ file_name }}</strong> ({{ file_size }} KB)</p>
-    {% endif %}
-    <div class="chat-box" id="chat-container">
-      {% for msg in history %}
+
+  <div class="main_container">
+
+    <!-- Sidebar for previous conversations -->
+    <div class="sidebar">
+      <h2>Previous Conversations</h2>
+      <ul>
+        {% for file, data in conversations.items() %}
+        <li>
+          <a href="{{ url_for('load_conversation', file_name=file) }}">
+            {{ data.file_name }}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="chat-container">
+      <h2>Custom PDF Chatbot</h2>
+      {% if file_name %}
+      <p class="file-name">📄 Using: <strong>{{ file_name }}</strong> ({{ file_size }} KB)</p>
+      {% endif %}
+      <div class="chat-box" id="chat-container">
+        {% for msg in history %}
         <div class="chat-message {{ msg.role }}">
           <strong>{{ msg.role.capitalize() }}:</strong> {{ msg.content }}
         </div>
-      {% endfor %}
+        {% endfor %}
+      </div>
+      
+      <form method="POST" class="chat-form">
+        <input type="text" name="question" placeholder="Type your question..." required>
+        <button type="submit">Send</button>
+      </form>
+      
+      <!-- New "Start New Conversation" Button -->
+      <!-- <form action="{{ url_for('index',new_chat='true')}}" method="GET">
+        <button type="submit" class="new-chat-btn">Start New Conversation</button>
+      </form> -->
+      
+      <a href="{{ url_for('index', new_chat='true') }}" class="new-chat-btn">Start New Conversation</a>
+      
+      
     </div>
-
-    <form method="POST" class="chat-form">
-      <input type="text" name="question" placeholder="Type your question..." required>
-      <button type="submit">Send</button>
-    </form>
-
-    <!-- New "Start New Conversation" Button -->
-    <!-- <form action="{{ url_for('index',new_chat='true')}}" method="GET">
-      <button type="submit" class="new-chat-btn">Start New Conversation</button>
-    </form> -->
-    
-    <a href="{{ url_for('index', new_chat='true') }}" class="new-chat-btn">Start New Conversation</a>
-    
-
   </div>
   <script>
     function scrollToBottom() {
