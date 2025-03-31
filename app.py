@@ -65,14 +65,14 @@ def index():
             session['file_name'] = pdf.filename
             session['file_size']  = round(os.path.getsize(filepath) / 1024, 2)
             session['conversations'][pdf.filename]={'file_path':filepath,'file_name':pdf.filename,'chat_memory':[]}
-            return redirect(url_for('after_upload'))
+            return redirect(url_for('process_pdf'))
     return render_template('index.html',conversations = session.get('conversations',{}))
 
 
-@app.route('/after_upload/')
-def after_upload():
-    file_name = session.get('file_name')
-    return render_template('after_upload.html',file_name = file_name)
+# @app.route('/after_upload/')
+# def after_upload():
+#     file_name = session.get('file_name')
+#     return render_template('after_upload.html',file_name = file_name)
 
 
 
