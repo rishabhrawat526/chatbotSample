@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+</head>
+<body>
+    <div class="home-container">
+        <h1>Welcome to the Chatbot</h1>
+        <p>Select a chat mode:</p>
+        <div class="chat-selection">
+            <input type="radio" id="general" name="chat_mode" value="general" checked>
+            <label for="general">Chat with General AI</label>
+            <input type="radio" id="data" name="chat_mode" value="data">
+            <label for="data">Chat with Your Data</label>
+        </div>
+        <button onclick="startChat()">Start Chat</button>
+    </div>
+
+    <script>
+        function startChat() {
+            let selectedMode = document.querySelector('input[name="chat_mode"]:checked').value;
+            if (selectedMode === 'general') {
+                window.location.href = "{{ url_for('general') }}";
+            } else {
+                window.location.href = "{{ url_for('index') }}";
+            }
+        }
+    </script>
+</body>
+</html>

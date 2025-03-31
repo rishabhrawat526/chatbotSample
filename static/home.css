@@ -1,0 +1,107 @@
+/* General page styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f9fafb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: white;
+}
+
+/* Container styling */
+.home-container {
+    background: #2c3e50;
+    backdrop-filter: blur(10px);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 400px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* Smooth fade-in effect */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Heading */
+h1 {
+    margin-bottom: 10px;
+    color: #fff;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+/* Subheading */
+p {
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: #e0e0e0;
+}
+
+/* Chat mode selection */
+.chat-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.chat-selection input {
+    display: none;
+}
+
+.chat-selection label {
+    display: block;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.chat-selection label:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.chat-selection input:checked + label {
+    background: rgba(255, 255, 255, 0.4);
+    font-weight: bold;
+    color: #333;
+    transform: scale(1.05);
+    box-shadow: 0 5px 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Start Chat Button */
+button {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    font-weight: 500;
+    background: linear-gradient(135deg, #ff7eb3, #ff758c);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 5px 15px rgba(255, 118, 136, 0.4);
+    letter-spacing: 1px;
+    outline: none;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 118, 136, 0.5);
+}
+
+button:active {
+    transform: scale(0.98);
+    box-shadow: 0 3px 10px rgba(255, 118, 136, 0.3);
+}

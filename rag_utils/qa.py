@@ -9,6 +9,14 @@ COHERE_API_KEY = os.getenv("COHERE_API_KEY")
 
 co = cohere.Client(COHERE_API_KEY)
 
+
+def get_general_answers(question,history):
+     # Call Cohere's chat model with history
+    answer = response = co.chat(
+            message=question,
+            chat_history=[{"role": msg["role"], "message": msg["content"]} for msg in history]
+        )
+    return answer.text
 def load_faiss_index(index_path='vector_store/index.faiss'):
     return faiss.read_index(index_path)
 

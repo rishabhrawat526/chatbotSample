@@ -18,6 +18,30 @@ def make_session_permanent():
     
 
 @app.route('/',methods=['GET','POST'])
+def home():
+    return render_template('home.html')
+
+
+@app.route('/general',methods=['GET','POST'])
+def general():
+    if request.args.get("new_chat") == "true":
+        print("New chat with general bot detected!")  # Debugging print
+        session['chat_memory']=[]
+        return redirect(url_for('general'))
+    if request.method=="POST":
+        question = request.form.get('question')
+        session['chat_memory'].append({'role':'user','content':question})
+        # Retrieve the last 5 messages from history
+        recent_history = session['chat_memory'][-5:]
+        from rag_utils.qa import get_general_answers
+        answer = get_general_answers(question,recent_history)
+        session['chat_memory'].append({'role':'chatbot','content':answer})
+        
+       
+
+    return render_template('general.html',history=session['chat_memory'])
+
+@app.route('/index',methods=['GET','POST'])
 def index():
     print("Request args:", request.args)  # Debugging line
 
