@@ -11,10 +11,10 @@
 
     <!-- Sidebar for previous conversations -->
     <div class="sidebar">
-      <h2>Previous Conversations</h2>
+      <h2>All Conversations</h2>
       <ul>
         {% for file, data in conversations.items() %}
-        <li>
+        <li class="{% if file == active_file %}active{% endif %}">
           <a href="{{ url_for('load_conversation', file_name=file) }}">
             {{ data.file_name }}
           </a>

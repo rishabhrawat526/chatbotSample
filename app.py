@@ -40,7 +40,7 @@ def index():
             session['uploaded_pdf'] = filepath
             session['file_name'] = pdf.filename
             session['file_size']  = round(os.path.getsize(filepath) / 1024, 2)
-            session['conversations'][pdf.filename]={'file_name':pdf.filename,'chat_memory':[]}
+            session['conversations'][pdf.filename]={'file_path':filepath,'file_name':pdf.filename,'chat_memory':[]}
             return redirect(url_for('after_upload'))
     return render_template('index.html',conversations = session.get('conversations',{}))
 
@@ -52,7 +52,7 @@ def after_upload():
 
 
 
-@app.route('/process_pdf',methods=['POST'])
+@app.route('/process_pdf',methods=['GET','POST'])
 def process_pdf():
     filepath=session.get('uploaded_pdf')
     if filepath:
@@ -75,16 +75,30 @@ def ask():
         recent_history = session['chat_memory'][-5:]
         answer = answer_question(question,recent_history)
         session['chat_memory'].append({'role':'assistant','content':answer})
+        conversations = session.get('conversations')
+        conversations[file_name]['chat_memory'] = session['chat_memory']
         print(recent_history)
-    return render_template('chat.html',history=session['chat_memory'],file_name=file_name,file_size = file_size,conversations = session.get('conversations'))
+    return render_template('chat.html',history=session['chat_memory'],file_name=file_name,file_size = file_size,conversations = session.get('conversations'),active_file = file_name)
 
 
 
 @app.route('/load_conversation/<file_name>')
 def load_conversation(file_name):
-    conversations = session.get('conversation',{})
-    conversations[file_name]['chat_memory'] = session.get('chat_memory')
-    return redirect(url_for('index'))
+    print('load conversation method')
+    print(file_name)
+    session['file_name'] = file_name
+    conversations = session.get('conversations')
+    print(conversations)
+    if file_name in conversations:
+        filepath = conversations[file_name]['file_path']
+        session['file_size']  = round(os.path.getsize(filepath) / 1024, 2)
+        print(filepath)
+
+        chat_mem = conversations[file_name]['chat_memory'] 
+        print(chat_mem)
+        session['uploaded_pdf'] = filepath
+        session['chat_memory']=chat_mem
+        return redirect(url_for('process_pdf'))
 if __name__=="__main__":
     app.run(
         host="0.0.0.0",

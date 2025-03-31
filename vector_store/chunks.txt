@@ -1,61 +1,101 @@
+ 
+Tax Invoice/Bill of Supply/Cash Memo
+(Original for Recipient)
+*ASSPL-Amazon Seller Services Pvt. Ltd., ARIPL-Amazon Retail India Pvt. Ltd. (only where Amazon Retail India Pvt. Ltd. fulfillment center is co-located) 
+Customers desirous of availing input GST credit are requested to create a Business account and purchase on Amazon.in/business from Business eligible offers 
+Please note that this invoice is not a demand for payment
+Page 1 of 1
+For Appario Retail Private Ltd:
+Authorized Signatory
+Or====chunk====oice is not a demand for payment
+Page 1 of 1
+For Appario Retail Private Ltd:
+Authorized Signatory
+Order Number: 406-7428374-3248344
+Invoice Number : LKO1-4291024
+Order Date: 08.02.2024
+Invoice Details : UP-LKO1-1034-2324
+Invoice Date : 08.02.2024
+Sl.
+No Description
+Unit Price Discount Qty Net
+Amount
+Tax
+Rate
+Tax
+Type
+Tax
+Amount
+Total
+Amount
+1 Lenovo IdeaPad Gaming 3 AMD Ryzen 5 6600H
+15.6" (39.62cm) FHD IPS 120Hz Gaming Laptop
+(16GB/512GB SSD/Win11/Office/NVIDIA RTX
+3050 4GB/RGB Keyboard/Alexa/3====chunk====m) FHD IPS 120Hz Gaming Laptop
+(16GB/512GB SSD/Win11/Office/NVIDIA RTX
+3050 4GB/RGB Keyboard/Alexa/3Month Game
+Pass/Onyx Grey/2.32Kg), 82SB00V3IN |
+B0CGV49DLW ( B0CGV49DLW ) 
+HSN:84713010
+₹53,381.36 ₹0.00
+1 ₹53,381.36 18% IGST ₹9,608.64 ₹62,990.00
+Shipping Charges 
+₹33.90
+-₹33.90
+₹0.00
+18% IGST
+₹0.00
+₹0.00
+TOTAL:
+₹9,608.64 ₹62,990.00
+Amount in Words:
+Sixty-two Thousand Nine Hundred Ninety only
+Whether tax is payable under reverse charge - No
+Payment Transaction ID: 1113SUZmxpfZe6XmwtfJHkqAU
+Date====chunk====ther tax is payable under reverse charge - No
+Payment Transaction ID: 1113SUZmxpfZe6XmwtfJHkqAU
+Date & Time: 08/02/2024,
+04:26:31 hrs
+Invoice Value: 
+62,990.00
+Mode of Payment: 
+Promotion
+Payment Transaction ID: 
+i93r1Y2qvWqurVjjN8Xdn408psjaCGMuUrv
+Date & Time: 08/02/2024,
+04:26:22 hrs
+Mode of Payment: UPI
+Sold By :
+Appario Retail Private Ltd 
+* Khasra numbers:444(P),445(P),459(P),
+460,461,462,463,464,
+465,466,467,468,469,470,471,472,473,474,,,
+75(P),476,477,478, 479,480,
+481,482,483(P),491,492,====chunk====,464,
+465,466,467,468,469,470,471,472,473,474,,,
+75(P),476,477,478, 479,480,
+481,482,483(P),491,492,493(P) Village -
+Bhaukapur,
+Lucknow, Uttar Pradesh, 226401
+IN
+PAN No: AALCA0171E
+GST Registration No: 09AALCA0171E1ZX
+Billing Address :
 Rishabh Rawat
-Kotdwara,Uttarakhand
-Ó +91-9410761458
-R rishabhrawat526@gmail.com
- github.com/rishabhrawat526
-EDUCATION
-Graphic Era Hill University, Dehradun
-2020 - 2024
-B.Tech - Computer Science and Engineering - CGPA - 8.24
-Dehradun, Uttarakhand
-D.A.V Public School, Kotdwara
-2019 - 2020
-(CBSE)Intermediate - Percentage - 90.16%
-Kotdwara, Uttarakhand
-St Joseph’s Convent School, Kotdwara
-2017 - 2018
-(ICSE)High School - Percentage - 86.66%
-Kotdwara, Uttarakhand
-COURSEWORK / SKILLS
-• Operating Syste====chunk====
-(ICSE)High School - Percentage - 86.66%
-Kotdwara, Uttarakhand
-COURSEWORK / SKILLS
-• Operating Systems
-• Data Structures
-• Oops Concepts
-• Web Developement
-• Machine Learning
-• Computer Networks
-PROJECTS
-TO-DO List | React.js, Node.js, Express.js, MongoDB
-• Developed a full-stack todo application using the MERN (MongoDB, Express.js, React.js, Node.js) stack,
-incorporating Redux for state management.
-• Implemented CRUD (Create, Read, Update, Delete) operations for managing todo items.
-• Utilized ====chunk====t.
-• Implemented CRUD (Create, Read, Update, Delete) operations for managing todo items.
-• Utilized Express.js to create RESTful APIs with separate controllers and routes for handling todo operations.
-Sign Language Detection System | Python, OpenCV, MediaPipe
-• Developed a Real Time Sign Detection Model Using LSTM neural network.
-• A transfer learning based model with loss of 0.3.
-• Uses finger and hand landmarks to interpret gestures accurately.
-Cyber Bully Detection System | Python, Sklearn, N====chunk====d hand landmarks to interpret gestures accurately.
-Cyber Bully Detection System | Python, Sklearn, NLTK, Flask
-• Developed a text sentiment classifier model using Logistic Regession with accuracy of 0.81.
-• Used Advanced NLP techniques like emotion mining, text summarization etc.
-TECHNICAL SKILLS
-Languages: JAVA, C++, C, SQL, JavaScript, Python
-Technologies/Frameworks: SpringMVC, SpringORM, HTML5, CSS, MongoDB, Express, React, NodeJS
-Developer Tools: VS Code, Jupyter, Git, Github
-CODING PROFILES====chunk==== CSS, MongoDB, Express, React, NodeJS
-Developer Tools: VS Code, Jupyter, Git, Github
-CODING PROFILES
-• Solved 400+ Problems across Leetcode W
-,Geeksforgeeks W and Naukri360 W.
-• Solved 300+ Problems on Codeforces W
-.
-STRENGTHS
-• Experimenter ,Quick Learner and Flexible Person.
-CERTIFICATIONS
-AWS Certified Cloud Practitioner W
-15-01-2025 – 15-01-2028
+House -68, lane 7, turner road,clement town
+Dehradun, UTTARAKHAND, 248002
+IN
+State/UT Code: 05
+Shipping Address :
+Rishabh Rawat 
+Rishabh Rawat
+House -68, lane 7, turner road,clement town
+Dehradun, UTTARAKHAND, 248002
+IN
+State/UT Code: 05 
+Place of su====chunk====68, lane 7, turner road,clement town
+Dehradun, UTTARAKHAND, 248002
+IN
+State/UT Code: 05 
+Place of supply: UTTARAKHAND 
+Place of delivery: UTTARAKHAND

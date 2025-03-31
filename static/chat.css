@@ -56,6 +56,13 @@ body {
   background: #1abc9c;
 }
 
+.sidebar li.active {
+  background: #1abc9c; /* Highlight color */
+  font-weight: bold;
+  color: white;
+  border-left: 4px solid white;
+}
+
 .sidebar a {
   color: white;
   text-decoration: none;
