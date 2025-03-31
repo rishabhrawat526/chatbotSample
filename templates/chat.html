@@ -8,7 +8,9 @@
 <body>
   <div class="chat-container">
     <h2>Custom PDF Chatbot</h2>
-    
+    {% if file_name %}
+    <p class="file-name">📄 Using: <strong>{{ file_name }}</strong> ({{ file_size }} KB)</p>
+    {% endif %}
     <div class="chat-box" id="chat-container">
       {% for msg in history %}
         <div class="chat-message {{ msg.role }}">

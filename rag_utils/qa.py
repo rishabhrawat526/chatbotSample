@@ -19,7 +19,6 @@ def embed_question(question):
 def search_similar_chunks(question_embedding, k=5):
     index = load_faiss_index()
     distances, indices = index.search(question_embedding, k)
-    print(indices)
     return indices[0]  # return top-k indices
 
 # Dummy chunks for now — in a real case, you'd load them from a DB or file
