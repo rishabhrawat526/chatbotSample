@@ -14,7 +14,9 @@ def get_general_answers(question,history):
      # Call Cohere's chat model with history
     answer = response = co.chat(
             message=question,
-            chat_history=[{"role": msg["role"], "message": msg["content"]} for msg in history]
+            chat_history=[{"role": msg["role"], "message": msg["content"]} for msg in history],
+            temperature=0.3,
+            connectors=[{"id": "web-search"}]
         )
     return answer.text
 def load_faiss_index(index_path='vector_store/index.faiss'):
@@ -66,7 +68,10 @@ def generate_answer(prompt,history=[]):
     response = co.chat(
         chat_history=history,
         message=prompt,
-        temperature=0.2
+        temperature=0.2,
+        citation_quality='fast',
+        seed=42,
+        stop_sequences = ["STOP", "End here","Additionaly","Also"],
     )
     print(response.text.strip())
     return response.text.strip()
