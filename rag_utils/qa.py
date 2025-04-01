@@ -13,6 +13,7 @@ co = cohere.Client(COHERE_API_KEY)
 def get_general_answers(question,history):
      # Call Cohere's chat model with history
     answer = response = co.chat(
+            model="command-r7b-12-2024",
             message=question,
             chat_history=[{"role": msg["role"], "message": msg["content"]} for msg in history],
             temperature=0.3,
@@ -66,6 +67,7 @@ def build_prompt(question, top_chunks,history=[]):
 
 def generate_answer(prompt,history=[]):
     response = co.chat(
+        model="command-r7b-12-2024",
         chat_history=history,
         message=prompt,
         temperature=0.2,

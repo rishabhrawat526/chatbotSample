@@ -45,9 +45,11 @@
         <button type="submit" class="new-chat-btn">Start New Conversation</button>
       </form> -->
       
-      <a href="{{ url_for('index', new_chat='true') }}" class="new-chat-btn">Start New Conversation</a>
+      <div class="temp_container">
+        <a href="{{ url_for('index', new_chat='true') }}" class="new-chat-btn">Start New Conversation</a>
       
-      <a href="{{ url_for('home') }}" class="new-chat-btn">Home</a>
+        <a href="{{ url_for('home') }}" class="new-chat-btn">Home</a>
+      </div>
       
     </div>
   </div>
