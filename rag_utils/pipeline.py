@@ -12,20 +12,20 @@ COHERE_API_KEY = os.getenv("COHERE_API_KEY")
 co = cohere.Client(COHERE_API_KEY)
 
 
-def extract_text_from_pdf(pdf_path):
-    print(pdf_path)
-    file_ext = pdf_path.split('.')[-1].lower()
+def extract_text_from_pdf(file_path):
+    print(file_path)
+    file_ext = file_path.split('.')[-1].lower()
     if file_ext not in ['pdf','txt']:
         return "Unsupported file format. Please upload a PDF or TXT file.", 400
     
     text=""
     if file_ext == "pdf":
-        doc = fitz.open(pdf_path)
+        doc = fitz.open(file_path)
         for page in doc:
             # no if pages in the document
             text+=page.get_text()
     elif file_ext == "txt":
-        with open(pdf_path, "r", encoding="utf-8") as file:
+        with open(file_path, "r", encoding="utf-8") as file:
             text = file.read() 
     # class pymupdf.document
     
@@ -34,7 +34,7 @@ def extract_text_from_pdf(pdf_path):
     return text
 
 
-def chunk_text(text,chunk_size=500,overlap=100):
+def chunk_text(text,chunk_size=200,overlap=50):
     chunks=[]
     start = 0
     while start <len(text):
@@ -76,6 +76,7 @@ def process_pdf_to_vectors(pdf_path):
 
     print("Storing in vector DB...")
     index = store_embeddings_faiss(embeddings)
+    
 
     print("Done.")
     return index  # optional: return for debugging or querying

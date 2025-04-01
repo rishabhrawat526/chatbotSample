@@ -43,8 +43,8 @@ def build_prompt(conversation):
     prompt = ""
     for msg in conversation:
         role = msg["role"].capitalize()
-        content = msg["content"]
-        prompt += f"{role}: {content}\n"
+        message = msg["message"]
+        prompt += f"{role}: {message}\n"
     prompt += "Assistant:"
     return prompt
 
@@ -56,19 +56,20 @@ def build_prompt(question, top_chunks,history=[]):
         prompt += "Conversation so far:\n"
         for msg in history:
             role = msg['role'].capitalize()
-            content = msg['content']
-            prompt += f"{role}: {content}\n"
+            message = msg['message']
+            prompt += f"{role}: {message}\n"
 
     prompt += f"User: {question}\nAssistant:"  # continue from user question
     return prompt
 
-def generate_answer(prompt):
-    response = co.generate(
-        prompt=prompt,
-        max_tokens=300,
-        temperature=0.3
+def generate_answer(prompt,history=[]):
+    response = co.chat(
+        chat_history=history,
+        message=prompt,
+        temperature=0.2
     )
-    return response.generations[0].text.strip()
+    print(response.text.strip())
+    return response.text.strip()
 
 def answer_question(question,history=[]):
     embedding = embed_question(question)
@@ -78,5 +79,5 @@ def answer_question(question,history=[]):
     top_chunks = [all_chunks[i] for i in top_k_indices if i < len(all_chunks)]
 
     prompt = build_prompt(question, top_chunks,history)
-    answer = generate_answer(prompt)
+    answer = generate_answer(prompt,history)
     return answer

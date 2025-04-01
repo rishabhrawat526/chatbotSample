@@ -30,7 +30,7 @@
       <div class="chat-box" id="chat-container">
         {% for msg in history %}
         <div class="chat-message {{ msg.role }}">
-          <strong>{{ msg.role.capitalize() }}:</strong> {{ msg.content }}
+          <strong>{{ msg.role.capitalize() }}:</strong> {{ msg.message }}
         </div>
         {% endfor %}
       </div>

@@ -47,39 +47,27 @@ def general():
 
 @app.route('/index',methods=['GET','POST'])
 def index():
-    print("Request args:", request.args)  # Debugging line
-
     if 'conversations' not in session:
         session['conversations']={}
     
-
     if request.args.get("new_chat") == "true":
         print("New chat detected!")  # Debugging print
         session['custom']['chat_memory']=[]
-        # some logic will be added here
     if len(session['custom']['chat_memory']) > 0:
-            print('yes this is running')
             return redirect(url_for('ask'))
-    if request.method=="POST":
-        pdf = request.files['pdf']
+    if request.method == "POST":
+        file = request.files['pdf']
         
-        if pdf:
-            filepath = os.path.join(UPLOADS_FOLDER,pdf.filename)
-            print(pdf)
-            pdf.save(filepath)
+        if file:
+            filepath = os.path.join(UPLOADS_FOLDER,file.filename)
+            print(file)
+            file.save(filepath)
             session['uploaded_pdf'] = filepath
-            session['file_name'] = pdf.filename
+            session['file_name'] = file.filename
             session['file_size']  = round(os.path.getsize(filepath) / 1024, 2)
-            session['conversations'][pdf.filename]={'file_path':filepath,'file_name':pdf.filename,'chat_memory':[]}
+            session['conversations'][file.filename]={'file_path':filepath,'file_name':file.filename,'chat_memory':[]}
             return redirect(url_for('process_pdf'))
     return render_template('index.html',conversations = session.get('conversations',{}))
-
-
-# @app.route('/after_upload/')
-# def after_upload():
-#     file_name = session.get('file_name')
-#     return render_template('after_upload.html',file_name = file_name)
-
 
 
 @app.route('/process_pdf',methods=['GET','POST'])
@@ -93,18 +81,18 @@ def process_pdf():
     
 @app.route('/ask',methods=['GET','POST'])
 def ask():
-    chat_id = session.get("chat_id")
     file_name = session.get('file_name')
     file_size = session.get('file_size')
     
     answer=None
+
     if request.method =="POST":
         question = request.form['question']
-        session['custom']['chat_memory'].append({'role':'user','content':question})
+        session['custom']['chat_memory'].append({'role':'user','message':question})
         from rag_utils.qa import answer_question
         recent_history = session['custom']['chat_memory'][-5:]
         answer = answer_question(question,recent_history)
-        session['custom']['chat_memory'].append({'role':'assistant','content':answer})
+        session['custom']['chat_memory'].append({'role':'CHATBOT','message':answer})
         conversations = session.get('conversations')
         conversations[file_name]['chat_memory'] = session['custom']['chat_memory']
         print(recent_history)
